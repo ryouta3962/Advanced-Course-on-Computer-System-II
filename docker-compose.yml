@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  jupyter:
+    # カレントディレクトリのDockerfileを使ってイメージをビルドする
+    build: .
+    container_name: my-jupyter-lab
+    ports:
+      # ホストOSの8888番ポートをコンテナの8888番ポートに接続
+      # ホスト側で8888番ポートが使用中の場合は "10000:8888" のように変更してください
+      - "8888:8888"
+    volumes:
+      # カレントディレクトリに`work`フォルダを作成し、コンテナ内の作業ディレクトリと同期
+      # これにより、コンテナを停止してもノートブックファイルが消えません
+      - ./work:/home/jovyan/work
+    environment:
+      # JupyterLabを有効にする
+      JUPYTER_ENABLE_LAB: "yes"
+      # (任意) ログイン用のトークンを固定する（毎回ログを確認するのが面倒な場合）
+      # セキュリティのため、'your-secret-token'はもっと複雑なものに変更してください
+      JUPYTER_TOKEN: "your-secret-token"

@@ -1,0 +1,10 @@
+# --- データ分析の基本ライブラリ ---
+pandas
+matplotlib
+seaborn
+scikit-learn
+japanize-matplotlib
+
+# --- その他、必要なライブラリがあれば追記 ---
+# openpyxl
+# requests
